@@ -1,0 +1,61 @@
+﻿<Window x:Class="TimeDeal.Music"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow"  Width="364" Height="455"  WindowStyle="None" ResizeMode="NoResize"  AllowsTransparency="True" Loaded="Window_Loaded" Name="Window" MouseDown="Window_MouseDown">
+    <Window.Resources>
+        <Storyboard x:Key="yezi1move" RepeatBehavior="Forever">
+            <DoubleAnimation BeginTime="00:00:00"   AutoReverse="True"  Duration="00:00:02" From="0" To="10"
+                     Storyboard.TargetProperty="Angle"     Storyboard.TargetName="yezi1Angle"  />
+            <DoubleAnimation BeginTime="00:00:00" AutoReverse="True"  Duration="00:00:02" From="15" To="-15"
+                     Storyboard.TargetProperty="Angle"     Storyboard.TargetName="yezi2Angle" />
+        </Storyboard>
+        <Storyboard x:Key="baiyunmove" RepeatBehavior="Forever" >
+            <DoubleAnimation BeginTime="00:00:00"   Duration="00:00:20" From="0" To="352"
+                     Storyboard.TargetProperty="X"  AutoReverse="False"   Storyboard.TargetName="baiyunPoint"  />
+            <DoubleAnimation BeginTime="00:00:00"   Duration="00:00:14" From="1" To="0"
+                     Storyboard.TargetProperty="Opacity"  AutoReverse="False"   Storyboard.TargetName="baiyun"/>
+        </Storyboard>
+        <Storyboard x:Key="info_scoll" RepeatBehavior="Forever" >
+            <DoubleAnimation BeginTime="00:00:00" Duration="00:00:20" From="0" To=""/>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Background>
+        <SolidColorBrush />
+    </Window.Background>
+    <Grid Margin="0,50,0,0" Height="358" Background="White">
+        <Image Name="baiyun"  Tag="baiyun" Source="Images/cloud.png" Width="190" Height="50" Margin="0,-55,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform x:Name="baiyunPoint"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Tag="sun" Width="105" Height="53" Margin="-6,-46,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Image Tag="close" x:Name="img_close"  Width="22" Height="22" Margin="0,16,6,0" VerticalAlignment="Top" HorizontalAlignment="Right" />
+        <TextBlock Height="22" HorizontalAlignment="Left" Margin="4,24,0,0" Name="textBlock1" Text="Trary_Music" VerticalAlignment="Top" Width="82" Foreground="White" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="9,53,0,0" Name="txtName" VerticalAlignment="Top" Width="171"  />
+        <Button Content="搜索" Height="23" HorizontalAlignment="Left" Margin="187,52,0,0" Name="btnRandom" VerticalAlignment="Top" Width="57" />
+        <MediaElement x:Name="myPlayer" Width="0" Height="0"/>
+        <Button Height="23" HorizontalAlignment="Left" Margin="252,332,0,0" Name="button_Add" VerticalAlignment="Top" Width="24" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="button_Add_Click">
+        <Image Source="/TimeDeal;component/Images/add01.png" />
+        </Button>
+        <ListView Height="247" HorizontalAlignment="Left" Margin="12,82,0,0" Name="listView_Music" VerticalAlignment="Top" Width="318" MouseDoubleClick="listView_Music_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="铃声列表" Width="325" DisplayMemberBinding="{Binding Song}"/>
+                    <GridViewColumn Header="Path" Width="325" DisplayMemberBinding="{Binding Path}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+<Button Height="34" Width="37" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="Hand" Margin="23,12,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Name="button_Play" Click="button_Play_Click">
+        <Image Source="/TimeDeal;component/Images/play.png" />
+</Button>
+        <Button Height="34" Width="37" HorizontalAlignment="Left" VerticalAlignment="Top" Cursor="Hand" Margin="66,12,0,0" BorderBrush="{x:Null}" Foreground="{x:Null}" Name="button_Pause" Visibility="Visible" Click="button_Pause_Click">
+        <Image Source="/TimeDeal;component/Images/pause.png" Margin="0,16,243,314" HorizontalAlignment="Right" Width="28" />
+    </Button>
+        <Button Height="23" HorizontalAlignment="Left" Margin="22,332,0,0" Name="button_Remove" VerticalAlignment="Top" Width="24" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="button_Remove_Click">
+            <Image Source="/TimeDeal;component/Images/gnome_edit_delete.png" />
+        </Button>
+    </Grid>
+</Window>
+

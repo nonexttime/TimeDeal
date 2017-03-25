@@ -1,0 +1,34 @@
+﻿<Window x:Class="TimeDeal.ThList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="Transparent"
+        Title="ThList" Height="298" Width="464" Loaded="Window_Loaded" MouseDown="Window_MouseDown">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="138*" />
+            <ColumnDefinition Width="140*" />
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.ColumnSpan="2" Height="259" HorizontalAlignment="Left" Name="tabControl1" VerticalAlignment="Top" Width="380" Background="#FFD5D5D5">
+            <TabItem Header="待做" Name="tabItem1">
+                <ListView Height="228" Name="listView1" Width="375" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFF0F2F3" Foreground="Black">
+                    <ListView.View>
+                    <GridView>
+                            <GridViewColumn Header="Time" Width="125" DisplayMemberBinding="{Binding Time}"/>
+                            <GridViewColumn Header="Title" Width="60" DisplayMemberBinding="{Binding Title}"/>
+                        <GridViewColumn Header="Content" Width="80" DisplayMemberBinding="{Binding Content}"/>
+                        <GridViewColumn Header="Music" Width="100" DisplayMemberBinding="{Binding Music}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="已完成" />
+            <TabItem HorizontalAlignment="Left" Name="tabItem2" VerticalAlignment="Top">
+                <Grid></Grid>
+            </TabItem>
+        </TabControl>
+        <Button Grid.Column="1" Height="35" HorizontalAlignment="Left" Margin="173,48,0,0" Name="button_Delete" VerticalAlignment="Top" Width="35" BorderBrush="{x:Null}" Click="button_Delete_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/TimeDeal;component/Images/gnome_edit_delete.png" />
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>
